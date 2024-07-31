@@ -9,7 +9,14 @@
 
 Vector2 Vector2Normalize(Vector2 v); // from raymath.h
 void LoadGameGrid();
+void HandleGameLogic();
 void DrawGameGrid();
+void HandleCameraMovement(Camera2D *camera);
+void PlaceShip(int position);
+void PlaceBlinker(int position);
+void PlaceE(int position);
+void PlaceGlider(int position);
+int CountLiveNeighbourCell(int a[GRID_COUNT][GRID_COUNT], int x, int y);
 
 bool pause = true;
 const int GRID_SIZE = 100;
@@ -148,6 +155,7 @@ void LoadGameGrid()
     PlaceE(position);
 }
 // Testing patterns
+
 void PlaceBlinker(int position)
 {
     grid[position][position] = 1;
