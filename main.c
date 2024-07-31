@@ -21,6 +21,7 @@ int CountLiveNeighbourCell(int a[GRID_COUNT][GRID_COUNT], int x, int y);
 bool pause = true;
 const int GRID_SIZE = 100;
 int grid[GRID_COUNT][GRID_COUNT];
+int generation = 0;
 
 int main(void)
 {
@@ -48,6 +49,8 @@ int main(void)
         DrawGameGrid();
         EndMode2D();
         DrawFPS(5, 5);
+        DrawRectangle(10, screenHeight - 50, 200, 40, BLACK);
+        DrawText(TextFormat("Generation: %d", generation), 10, screenHeight - 40, 25, GREEN);
         EndDrawing();
     }
     CloseWindow();
@@ -107,6 +110,7 @@ void HandleGameLogic()
             grid[i][j] = temp_grid[i][j];
         }
     }
+    generation++;
 }
 
 int CountLiveNeighbourCell(int a[GRID_COUNT][GRID_COUNT], int x, int y)
@@ -148,11 +152,11 @@ void LoadGameGrid()
     {
         for (int y = 0; y < GRID_COUNT; y++)
         {
-            grid[x][y] = 0;
+            grid[x][y] = 0; // rand() % 2;
         }
     }
-    int position = GRID_COUNT / 2;
-    PlaceE(position);
+    PlaceE(20);
+    PlaceE(50);
 }
 // Testing patterns
 
